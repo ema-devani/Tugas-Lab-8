@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Calculator
+{
+    public partial class FrmEntryCalculator : Form
+    {
+        public FrmEntryCalculator()
+        {
+            InitializeComponent();
+        }
+
+        public int Penambahan(int a, int b)
+        {
+            return a + b;
+        }
+
+        public int Pengurangan(int a, int b)
+        {
+            return a - b;
+        }
+        public int Perkalian(int a, int b)
+        {
+            return a * b;
+        }
+        public static int Pembagian(int a, int b)
+        {
+            return a / b;
+        }
+
+        private void btnHitung_Click(object sender, EventArgs e)
+        {
+            var a = int.Parse(txtNilaiA.Text);
+            var b = Convert.ToInt32(txtNilaiB.Text);
+
+            var cal = new FrmEntryCalculator();
+
+            lstHasil.Items.Clear();
+
+            lstHasil.Items.Add(string.Format("Hasil Penambahan: {0} + {1} = {2}", a, b, cal.Penambahan(a, b)));
+            lstHasil.Items.Add(string.Format("Hasil Pengurangan: {0} - {1} = {2}", a, b, cal.Pengurangan(a, b)));
+            lstHasil.Items.Add(string.Format("Hasil Perkalian: {0} x {1} = {2}", a, b, cal.Perkalian(a, b)));
+            lstHasil.Items.Add(string.Format("Hasil Pembagian: {0} / {1} = {2}", a, b, FrmEntryCalculator.Pembagian(a, b)));
+        }
+    }
+}
